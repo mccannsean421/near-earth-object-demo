@@ -1,28 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Map />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
+import moment from 'moment';
+import Map from './components/map.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Map,
+  },
+  async created() {
+    const date = new Date();
+    const today = moment(date).format('YYYY-MM-DD')
+    const key = process.env.VUE_APP_API_KEY;
+    const feed = await axios.get(`/neo/rest/v1/feed?start_date=2021-02-19&end_date=${today}&api_key=${key}`);
+    console.log(feed.data.near_earth_objects[today]);
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#info {
+	position: absolute;
+	top: 10px;
+	width: 100%;
+	text-align: center;
+	z-index: 100;
+	display:block;
 }
 </style>

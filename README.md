@@ -1,24 +1,6 @@
 # three-demo
 
-## Project setup
-```
-npm install
-```
+## 3d models
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+ - use .GLB or .GLTF these are well supported by the browser
+ - Public domain glTF files are available at [sketchfab](https://sketchfab.com/3d-models?features=downloadable&sort_by=-likeCount)
